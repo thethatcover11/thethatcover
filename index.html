@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>THAT COVER — Fit It. Flaunt It. Cover It.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#faf7f2;--warm-white:#f5f0e8;--parchment:#ede8df;
+  --blush:#e8c4b8;--blush-dark:#c9957e;--rose:#b5635a;
+  --dusty-pink:#d4a5a0;--sage:#8faa8b;--sage-light:#c8d8c4;
+  --charcoal:#2a2520;--warm-gray:#7a7268;--light-gray:#c8c2b8;
+  --gold:#c5a55a;--gold-light:#dfc080;--text:#2a2520;--text-muted:#8a8078;
+  --border:rgba(42,37,32,0.1);--border-blush:rgba(196,149,126,0.3);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(250,247,242,0.88);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--border-blush);transition:all 0.4s;}
+.nav-logo-wrap{display:flex;align-items:center;gap:0.75rem;text-decoration:none;}
+.nav-logo-img{width:38px;height:38px;border-radius:50%;object-fit:cover;}
+.nav-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:0.06em;color:var(--charcoal);text-transform:uppercase;}
+.nav-brand span{color:var(--rose);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--warm-gray);text-decoration:none;transition:color 0.3s;}
+.nav-links a:hover{color:var(--rose);}
+.nav-cta{background:var(--rose);color:#fff;padding:0.55rem 1.4rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:400;border:none;cursor:pointer;text-decoration:none;transition:all 0.3s;border-radius:0;}
+.nav-cta:hover{background:var(--charcoal);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{width:22px;height:1px;background:var(--charcoal);display:block;transition:all 0.3s;}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--cream);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:2rem;color:var(--charcoal);text-decoration:none;transition:color 0.3s;}
+.mobile-menu a:hover{color:var(--rose);}
+
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 2rem 4rem;max-width:1100px;margin:0 auto;gap:4rem;}
+.hero-left{position:relative;}
+.hero-eyebrow{font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--rose);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;opacity:0;animation:fadeUp 0.8s ease 0.4s forwards;}
+.hero-eyebrow::before{content:'';width:30px;height:0.5px;background:var(--rose);}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:700;line-height:1;color:var(--charcoal);margin-bottom:0.5rem;opacity:0;animation:fadeUp 0.9s ease 0.6s forwards;}
+.hero-title .italic{font-style:italic;color:var(--rose);}
+.hero-tagline{font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-gray);margin:1.25rem 0 1.75rem;font-weight:400;opacity:0;animation:fadeUp 0.9s ease 0.8s forwards;}
+.hero-desc{font-size:1rem;color:var(--warm-gray);line-height:1.8;max-width:380px;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.9s ease 1s forwards;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.9s ease 1.1s forwards;}
+.btn-primary{background:var(--rose);color:#fff;padding:0.9rem 2.5rem;font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:400;border:none;cursor:pointer;text-decoration:none;transition:all 0.3s;display:inline-block;}
+.btn-primary:hover{background:var(--charcoal);}
+.btn-ghost{background:transparent;color:var(--charcoal);padding:0.9rem 2.5rem;font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:400;border:0.5px solid var(--charcoal);cursor:pointer;text-decoration:none;transition:all 0.3s;display:inline-block;}
+.btn-ghost:hover{background:var(--charcoal);color:#fff;}
+.hero-right{display:flex;justify-content:center;align-items:center;position:relative;opacity:0;animation:fadeUp 1s ease 0.8s forwards;}
+.product-diagram{display:flex;gap:2.5rem;align-items:flex-end;position:relative;}
+.diagram-item{display:flex;flex-direction:column;align-items:center;gap:1rem;position:relative;}
+.diagram-case{width:130px;height:240px;background:rgba(255,255,255,0.6);border-radius:22px;border:1.5px solid var(--border-blush);position:relative;overflow:hidden;backdrop-filter:blur(8px);box-shadow:0 20px 60px rgba(196,149,126,0.15),0 4px 20px rgba(42,37,32,0.08);display:flex;align-items:center;justify-content:center;}
+.diagram-case-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:50px;height:7px;background:rgba(200,194,184,0.6);border-radius:0 0 8px 8px;}
+.case-inner{width:90%;height:90%;border-radius:16px;position:relative;overflow:hidden;}
+.case-card{position:absolute;inset:0;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;gap:0.4rem;transition:opacity 0.7s ease,transform 0.7s ease;}
+.c-kedarnath{background:linear-gradient(150deg,#1a2a3a 0%,#2a4060 100%);}
+.c-minimal{background:linear-gradient(150deg,var(--charcoal) 0%,#3a3530 100%);opacity:0;transform:translateY(10px);}
+.c-travel{background:linear-gradient(150deg,#1a2a18 0%,#2d4528 100%);opacity:0;transform:translateY(10px);}
+.c-rose{background:linear-gradient(150deg,#3a1820 0%,#5a2835 100%);opacity:0;transform:translateY(10px);}
+.card-icon{font-size:2.2rem;}
+.card-title-text{font-family:'Playfair Display',serif;font-size:0.9rem;color:#fff;text-align:center;line-height:1.2;font-style:italic;}
+.card-sub{font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.6);}
+.spec-labels{position:absolute;left:-105px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-evenly;}
+.spec-label{display:flex;align-items:center;gap:0.5rem;font-size:0.72rem;color:var(--warm-gray);}
+.spec-label::after{content:'';width:35px;height:0.5px;background:var(--border-blush);}
+.spec-label-right{position:absolute;right:-115px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-evenly;}
+.spec-r{display:flex;align-items:center;gap:0.5rem;font-size:0.72rem;color:var(--warm-gray);}
+.spec-r::before{content:'';width:35px;height:0.5px;background:var(--border-blush);}
+.cards-stack{display:flex;flex-direction:column;gap:-10px;position:relative;}
+.mini-card{width:70px;height:115px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 8px 24px rgba(0,0,0,0.12);animation:floatY 3s ease-in-out infinite;border:0.5px solid rgba(255,255,255,0.3);}
+.mc1{background:linear-gradient(150deg,#1a2a3a,#2a4060);animation-delay:0s;}
+.mc2{background:linear-gradient(150deg,var(--charcoal),#3a3530);animation-delay:0.6s;}
+.mc3{background:linear-gradient(150deg,#3a1820,#5a2835);animation-delay:1.2s;}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.diagram-label{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--warm-gray);font-weight:400;text-align:center;}
+.diagram-label strong{display:block;font-size:0.8rem;color:var(--charcoal);font-weight:400;margin-bottom:0.2rem;}
+.diagram-plus{font-family:'Playfair Display',serif;font-size:2rem;color:var(--blush-dark);align-self:center;padding-bottom:40px;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+
+
+/* TICKER */
+.ticker{background:var(--rose);padding:0.6rem 0;overflow:hidden;white-space:nowrap;}
+.ticker-track{display:inline-block;animation:tickMove 22s linear infinite;}
+.ticker-track span{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;font-weight:400;padding:0 2rem;}
+.ticker-dot{color:rgba(255,255,255,0.5);}
+@keyframes tickMove{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* SECTION BASE */
+section{padding:6rem 1.5rem;}
+.container{max-width:1000px;margin:0 auto;}
+.section-eyebrow{font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.75rem;}
+.section-eyebrow::before{content:'';width:24px;height:0.5px;background:var(--rose);}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:600;line-height:1.05;color:var(--charcoal);margin-bottom:1rem;}
+.section-title em{font-style:italic;color:var(--rose);}
+.section-sub{color:var(--warm-gray);font-size:0.95rem;line-height:1.8;max-width:480px;}
+.divider-line{width:50px;height:0.5px;background:var(--blush-dark);margin:1.25rem 0;}
+
+/* WHAT YOU GET */
+#what{background:var(--parchment);padding:5rem 1.5rem;}
+.what-wrap{max-width:1000px;margin:0 auto;}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3.5rem;align-items:center;}
+@media(max-width:700px){.what-grid{grid-template-columns:1fr;gap:2.5rem;}}
+.what-item{display:flex;flex-direction:column;align-items:center;position:relative;}
+.what-card{width:100%;background:var(--warm-white);border-radius:20px;border:0.5px solid var(--border-blush);padding:2.5rem 2rem 1.75rem;position:relative;display:flex;flex-direction:column;align-items:center;box-shadow:0 12px 40px rgba(196,149,126,0.1);overflow:visible;}
+.case-svg-wrap{width:120px;height:200px;position:relative;margin:0 auto;}
+.case-svg-wrap svg{width:100%;height:100%;}
+.cards-fan-wrap{width:160px;height:200px;position:relative;margin:0 auto;}
+.fan-card{position:absolute;width:90px;height:150px;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.15);display:flex;align-items:center;justify-content:center;font-size:2rem;border:0.5px solid rgba(255,255,255,0.2);}
+.fan-c1{background:linear-gradient(145deg,#1a2a3a,#2a4060);transform:rotate(-12deg);top:10px;left:0;}
+.fan-c2{background:linear-gradient(145deg,#2a2520,#3d3830);transform:rotate(-3deg);top:5px;left:25px;}
+.fan-c3{background:linear-gradient(145deg,#3a1820,#5a2835);transform:rotate(6deg);top:8px;left:50px;}
+.what-labels-left{position:absolute;left:-130px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:1.75rem;}
+.what-labels-right{position:absolute;right:-130px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:1.75rem;}
+@media(max-width:900px){.what-labels-left,.what-labels-right{position:static;transform:none;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:1rem;}}
+.wlabel{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--warm-gray);font-weight:400;white-space:nowrap;}
+.wlabel-left{flex-direction:row-reverse;text-align:right;}
+.wlabel-left .wl-line{background:linear-gradient(to left,var(--blush-dark),transparent);}
+.wlabel-right .wl-line{background:linear-gradient(to right,var(--blush-dark),transparent);}
+.wl-line{width:40px;height:0.5px;flex-shrink:0;}
+.wl-dot{width:5px;height:5px;border-radius:50%;background:var(--blush-dark);flex-shrink:0;}
+.what-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:600;color:var(--rose);margin-top:1.75rem;text-align:center;}
+
+/* HOW IT WORKS */
+#how{background:var(--warm-white);}
+.steps-wrap{display:grid;grid-template-columns:repeat(3,1fr);margin-top:3.5rem;gap:0;border:0.5px solid var(--border-blush);}
+@media(max-width:700px){.steps-wrap{grid-template-columns:1fr;}}
+.step-box{padding:2.5rem 2rem;border-right:0.5px solid var(--border-blush);position:relative;transition:background 0.4s;}
+.step-box:last-child{border-right:none;}
+.step-box:hover{background:rgba(196,149,126,0.04);}
+.step-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:600;color:rgba(181,99,90,0.12);line-height:1;margin-bottom:0.75rem;}
+.step-icon{font-size:1.8rem;margin-bottom:0.75rem;}
+.step-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--charcoal);margin-bottom:0.5rem;font-weight:600;}
+.step-desc{font-size:0.88rem;color:var(--warm-gray);line-height:1.75;}
+
+/* PRODUCTS */
+#products{background:var(--cream);}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3rem;border:0.5px solid var(--border-blush);}
+@media(max-width:700px){.products-grid{grid-template-columns:1fr;}}
+.product-card{padding:2.5rem 2rem;border-right:0.5px solid var(--border-blush);position:relative;overflow:hidden;transition:background 0.4s;}
+.product-card:last-child{border-right:none;}
+.product-card:hover{background:var(--warm-white);}
+.product-card.featured{background:var(--charcoal);}
+.product-card.featured *{color:#fff !important;}
+.product-card.featured .product-badge{background:var(--rose);}
+.product-card.featured .product-btn{border-color:rgba(255,255,255,0.4);color:#fff;}
+.product-card.featured .product-btn:hover{background:#fff;color:var(--charcoal) !important;}
+.product-card.featured .product-price{color:var(--gold-light) !important;}
+.product-badge{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;background:var(--parchment);color:var(--warm-gray);display:inline-block;padding:0.3rem 0.75rem;margin-bottom:1.25rem;}
+.product-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;color:var(--charcoal);line-height:1.1;margin-bottom:0.4rem;}
+.product-price{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:400;color:var(--rose);margin-bottom:0.25rem;}
+.product-price-note{font-size:0.78rem;color:var(--warm-gray);margin-bottom:1.25rem;}
+.product-features{list-style:none;margin-bottom:2rem;}
+.product-features li{font-size:0.84rem;color:var(--warm-gray);padding:0.4rem 0;border-bottom:0.5px solid var(--border);display:flex;gap:0.75rem;align-items:flex-start;}
+.product-features li::before{content:'—';color:var(--blush-dark);flex-shrink:0;margin-top:0.05rem;}
+.product-btn{display:block;width:100%;text-align:center;padding:0.85rem;border:0.5px solid var(--charcoal);color:var(--charcoal);font-size:0.76rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;font-family:'Jost',sans-serif;transition:all 0.3s;cursor:pointer;background:transparent;}
+.product-btn:hover{background:var(--charcoal);color:#fff;}
+.upsell-row{border-top:0.5px solid var(--border-blush);padding:2rem 2.5rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;background:var(--parchment);}
+.upsell-text{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--charcoal);}
+.upsell-text small{display:block;font-family:'Jost',sans-serif;font-size:0.78rem;color:var(--warm-gray);margin-top:0.2rem;}
+.upsell-prices{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+.up-price-item{text-align:center;}
+.up-price{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--rose);}
+.up-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);}
+.up-sep{width:0.5px;height:36px;background:var(--border-blush);}
+
+/* GALLERY / COLLECTION */
+#gallery{background:var(--parchment);padding:6rem 1.5rem;}
+.cat-tabs{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:2rem;}
+.cat-tab{padding:0.5rem 1.25rem;border:0.5px solid var(--border-blush);background:transparent;color:var(--warm-gray);font-family:'Jost',sans-serif;font-size:0.76rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.25s;}
+.cat-tab:hover,.cat-tab.active{background:var(--rose);color:#fff;border-color:var(--rose);}
+.product-collection-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2.5rem;}
+@media(min-width:600px){.product-collection-grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:900px){.product-collection-grid{grid-template-columns:repeat(4,1fr);}}
+.pc-card{cursor:pointer;text-align:center;transition:transform 0.3s;position:relative;}
+.pc-card:hover{transform:translateY(-6px);}
+.pc-card.hidden{display:none;}
+.pc-badge{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--charcoal);font-size:0.65rem;letter-spacing:0.1em;font-weight:500;padding:0.3rem 0.9rem;border-radius:99px;white-space:nowrap;z-index:4;font-family:'Jost',sans-serif;}
+
+/* ── STANDARDIZED PHONE FRAME (for real product images) ── */
+.pc-phone{width:100%;max-width:155px;margin:0 auto;position:relative;}
+.pc-frame{
+  position:relative;width:100%;padding-bottom:216.7%;
+  background:#111;border-radius:28px;border:3px solid #0a0a0a;
+  overflow:hidden;
+  box-shadow:0 0 0 1.5px rgba(255,255,255,0.05) inset,0 24px 60px rgba(0,0,0,0.45),0 4px 12px rgba(0,0,0,0.25);
+}
+.pc-frame::before{
+  content:'';position:absolute;top:10px;left:50%;transform:translateX(-50%);
+  width:36px;height:7px;background:#0a0a0a;border-radius:4px;z-index:5;
+}
+.pc-frame::after{
+  content:'';position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
+  width:28px;height:3.5px;background:rgba(255,255,255,0.12);border-radius:2px;z-index:5;
+}
+.pc-frame-inner{position:absolute;inset:0;overflow:hidden;border-radius:25px;}
+.pc-frame-inner img{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  display:block;transition:transform 0.5s ease;
+}
+.pc-card:hover .pc-frame-inner img{transform:scale(1.05);}
+.pc-placeholder{
+  width:100%;height:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:0.7rem;
+  background:linear-gradient(155deg,#1a1828 0%,#2a1820 60%,#1a2820 100%);
+}
+.pc-placeholder-emoji{font-size:2rem;line-height:1;}
+.pc-placeholder-text{
+  font-size:0.52rem;color:rgba(255,255,255,0.35);text-align:center;
+  letter-spacing:0.14em;text-transform:uppercase;padding:0 1rem;line-height:1.6;
+  font-family:'Jost',sans-serif;
+}
+.pc-name{font-family:'Playfair Display',serif;font-size:0.9rem;color:var(--charcoal);font-weight:400;margin-top:0.85rem;}
+.pc-theme-tag{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--rose);margin-top:0.2rem;}
+.pc-price{font-family:'Playfair Display',serif;font-size:0.95rem;color:var(--warm-gray);margin-top:0.2rem;}
+.pc-order-btn{margin-top:0.6rem;display:inline-block;padding:0.45rem 1rem;background:var(--rose);color:#fff;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;font-family:'Jost',sans-serif;text-decoration:none;transition:background 0.25s;border:none;cursor:pointer;}
+.pc-order-btn:hover{background:var(--charcoal);}
+
+/* WHY US */
+#why{background:var(--warm-white);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem;border:0.5px solid var(--border-blush);}
+@media(max-width:700px){.why-grid{grid-template-columns:1fr;}}
+.why-item{padding:2.5rem;border-right:0.5px solid var(--border-blush);border-bottom:0.5px solid var(--border-blush);transition:background 0.4s;}
+.why-item:hover{background:rgba(196,149,126,0.04);}
+.why-icon{font-size:1.8rem;margin-bottom:1rem;}
+.why-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--charcoal);margin-bottom:0.5rem;font-weight:600;}
+.why-desc{font-size:0.88rem;color:var(--warm-gray);line-height:1.75;}
+.stats-strip{display:grid;grid-template-columns:repeat(3,1fr);border:0.5px solid var(--border-blush);border-top:none;}
+.stat-item{padding:2rem;text-align:center;border-right:0.5px solid var(--border-blush);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--rose);font-weight:400;}
+.stat-label{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--warm-gray);margin-top:0.3rem;}
+
+/* FAQ */
+#faq{background:var(--cream);}
+.faq-list{margin-top:2.5rem;}
+.faq-item{border-bottom:0.5px solid var(--border-blush);}
+.faq-q{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 0;cursor:pointer;text-align:left;gap:1rem;}
+.faq-q-text{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);font-weight:400;}
+.faq-plus{font-size:1.2rem;color:var(--rose);flex-shrink:0;transition:transform 0.3s;line-height:1;}
+.faq-item.open .faq-plus{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;font-size:0.9rem;color:var(--warm-gray);line-height:1.8;}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:1.4rem;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr;padding-top:6rem;gap:2.5rem;}
+  .hero-right{display:none;}
+  .spec-labels,.spec-label-right{display:none;}
+}
+@media(max-width:700px){
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  .products-grid,.steps-wrap{grid-template-columns:1fr;}
+  .product-card{border-right:none;border-bottom:0.5px solid var(--border-blush);}
+  .step-box{border-right:none;border-bottom:0.5px solid var(--border-blush);}
+  .why-grid{grid-template-columns:1fr;}
+  .why-item{border-right:none;}
+  .stats-strip{grid-template-columns:1fr;}
+  .stat-item{border-right:none;border-bottom:0.5px solid var(--border-blush);}
+}
+
+/* CURSOR */
+.cursor{width:7px;height:7px;background:var(--rose);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+.cursor-ring{width:30px;height:30px;border:0.5px solid var(--rose);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.15s ease;opacity:0.4;}
+
+/* ── ADMIN PANEL STYLES ── */
+.admin-fab{
+  position:fixed;bottom:2rem;right:2rem;z-index:900;
+  display:none;
+  background:var(--charcoal);color:rgba(255,255,255,0.9);
+  padding:0.7rem 1.4rem;border:none;cursor:pointer;
+  font-family:'Jost',sans-serif;font-size:0.72rem;letter-spacing:0.12em;
+  text-transform:uppercase;border-radius:2px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all 0.3s;
+}
+.admin-fab:hover{background:var(--rose);transform:translateY(-2px);}
+.admin-fab.active{display:flex;align-items:center;gap:0.5rem;}
+
+.admin-overlay{
+  position:fixed;inset:0;background:rgba(10,8,6,0.92);z-index:3000;
+  display:none;align-items:flex-start;justify-content:center;
+  padding:1.5rem;overflow-y:auto;backdrop-filter:blur(6px);
+}
+.admin-overlay.open{display:flex;}
+.admin-panel-box{background:var(--warm-white);width:100%;max-width:720px;margin:auto;position:relative;overflow:hidden;}
+.admin-panel-header{background:var(--charcoal);padding:1.25rem 1.75rem;display:flex;align-items:center;justify-content:space-between;}
+.admin-panel-header h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:#fff;font-weight:600;}
+.admin-panel-body{padding:1.75rem;}
+.a-label{display:block;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rose);margin-bottom:0.4rem;margin-top:1rem;}
+.a-label:first-child{margin-top:0;}
+.a-input{width:100%;padding:0.75rem 1rem;border:0.5px solid var(--border-blush);background:var(--cream);font-family:'Jost',sans-serif;font-size:0.88rem;color:var(--charcoal);outline:none;transition:border-color 0.3s;-webkit-appearance:none;}
+.a-input:focus{border-color:var(--rose);}
+.a-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:500px){.a-grid{grid-template-columns:1fr;}}
+.a-image-zone{border:1.5px dashed var(--blush-dark);padding:1.25rem;background:var(--parchment);margin-top:1rem;}
+.a-preview-phone{width:55px;height:112px;border-radius:10px;overflow:hidden;border:2px solid #111;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+.a-preview-phone img{width:100%;height:100%;object-fit:cover;display:block;}
+.a-card-row{display:flex;align-items:center;gap:0.75rem;padding:0.65rem;background:var(--warm-white);border:0.5px solid var(--border-blush);margin-bottom:0.4rem;}
+.a-card-thumb{width:32px;height:56px;border-radius:5px;overflow:hidden;flex-shrink:0;background:var(--parchment);border:1px solid var(--border-blush);display:flex;align-items:center;justify-content:center;}
+.a-card-thumb img{width:100%;height:100%;object-fit:cover;}
+.a-card-info{flex:1;min-width:0;}
+.a-card-name{font-family:'Playfair Display',serif;font-size:0.85rem;color:var(--charcoal);}
+.a-card-sub{font-size:0.7rem;color:var(--rose);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.1rem;}
+.a-card-meta{font-size:0.72rem;color:var(--warm-gray);margin-top:0.1rem;}
+.a-btn{padding:0.45rem 0.9rem;cursor:pointer;font-family:'Jost',sans-serif;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.25s;border:none;}
+.a-btn-edit{background:var(--parchment);color:var(--charcoal);border:0.5px solid var(--border-blush) !important;}
+.a-btn-edit:hover{background:var(--charcoal);color:#fff;}
+.a-btn-delete{background:transparent;color:var(--rose);border:0.5px solid var(--rose) !important;}
+.a-btn-delete:hover{background:var(--rose);color:#fff;}
+.a-btn-save{background:var(--rose);color:#fff;padding:0.78rem 2rem;font-size:0.78rem;border:none !important;}
+.a-btn-save:hover{background:var(--charcoal);}
+.a-btn-cancel{background:transparent;color:var(--warm-gray);border:0.5px solid var(--border-blush) !important;padding:0.78rem 1.25rem;font-size:0.78rem;}
+.a-btn-cancel:hover{border-color:var(--charcoal) !important;color:var(--charcoal);}
+.admin-list-wrap{max-height:350px;overflow-y:auto;border:0.5px solid var(--border-blush);}
+.gdrive-note{font-size:0.7rem;color:var(--warm-gray);line-height:1.7;margin-top:0.5rem;padding:0.6rem 0.75rem;background:rgba(181,99,90,0.05);border-left:2px solid var(--blush-dark);}
+.admin-section-divider{border:none;border-top:0.5px solid var(--border-blush);margin:1.5rem 0;}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo-wrap">
+    <div class="nav-logo-img" style="background:var(--rose);display:flex;align-items:center;justify-content:center;">
+      <span style="color:#fff;font-family:'Playfair Display',serif;font-weight:700;font-size:0.9rem;">TC</span>
+    </div>
+    <div class="nav-brand">That <span>Cover</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#gallery">Collection</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+  <a href="https://instagram.com/thethatcover" target="_blank" class="nav-cta">Order on Instagram</a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#how" onclick="closeMobile()">How It Works</a>
+  <a href="#products" onclick="closeMobile()">Shop</a>
+  <a href="#gallery" onclick="closeMobile()">Collection</a>
+  <a href="#why" onclick="closeMobile()">Why Us</a>
+  <a href="https://instagram.com/thethatcover" target="_blank" onclick="closeMobile()">Order on Instagram</a>
+</div>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Handmade in India · Est. 2026</p>
+    <h1 class="hero-title">Your Case.<br>Your Card.<br><span class="italic">Your Vibe.</span></h1>
+    <p class="hero-tagline">Fit it. Flaunt it. Cover it — with That Cover</p>
+    <p class="hero-desc">Crystal clear cases with swappable printed insert cards. One case, endless personalities. Change your vibe anytime.</p>
+    <div class="hero-actions">
+      <a href="https://instagram.com/thethatcover" target="_blank" class="btn-primary">Order on Instagram</a>
+      <a href="#gallery" class="btn-ghost">See Collection</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="product-diagram">
+      <div class="diagram-item">
+        <div style="position:relative;">
+          <div class="spec-labels">
+            <div class="spec-label">Crystal clear</div>
+            <div class="spec-label">Anti-yellowing</div>
+            <div class="spec-label">Hardshell</div>
+          </div>
+          <div class="diagram-case">
+            <div class="diagram-case-notch"></div>
+            <div class="case-inner">
+              <div class="case-card c-kedarnath" id="heroCard1"><div class="card-icon">🕉️</div><div class="card-title-text">Divine</div><div class="card-sub">॥ ॐ नमः शिवाय ॥</div></div>
+              <div class="case-card c-minimal" id="heroCard2"><div class="card-title-text" style="font-size:1rem;">Cabin Collection</div><div class="card-sub" style="margin-top:0.4rem;">cozy aesthetic</div></div>
+              <div class="case-card c-travel" id="heroCard3"><div class="card-icon">🧵</div><div class="card-title-text">Art Series</div><div class="card-sub">handcrafted</div></div>
+              <div class="case-card c-rose" id="heroCard4"><div class="card-icon">🎨</div><div class="card-title-text">Zariya<br>The Dhaga</div><div class="card-sub">thread &amp; soul</div></div>
+            </div>
+          </div>
+          <div class="spec-label-right">
+            <div class="spec-r">Waterproof</div>
+            <div class="spec-r">Premium card stock</div>
+          </div>
+        </div>
+        <div class="diagram-label"><strong>Transparent Case</strong>fits all popular models</div>
+      </div>
+      <div class="diagram-plus">+</div>
+      <div class="diagram-item">
+        <div class="cards-stack" style="position:relative;width:70px;height:200px;">
+          <div class="mini-card mc1" style="position:absolute;top:0;left:-12px;transform:rotate(-8deg);">🧵</div>
+          <div class="mini-card mc2" style="position:absolute;top:25px;left:4px;transform:rotate(-2deg);">🕉️</div>
+          <div class="mini-card mc3" style="position:absolute;top:20px;left:20px;transform:rotate(6deg);">🎨</div>
+        </div>
+        <div class="diagram-label"><strong>Swappable Cards</strong>change anytime, no tools</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>5 Unique Collections</span><span class="ticker-dot">·</span>
+    <span>Handmade with Love</span><span class="ticker-dot">·</span>
+    <span>Made in India</span><span class="ticker-dot">·</span>
+    <span>Cabin Collection</span><span class="ticker-dot">·</span>
+    <span>Divine</span><span class="ticker-dot">·</span>
+    <span>Persona Collection</span><span class="ticker-dot">·</span>
+    <span>The Art Series</span><span class="ticker-dot">·</span>
+    <span>Zariya- The Dhaga</span><span class="ticker-dot">·</span>
+    <span>5 Unique Collections</span><span class="ticker-dot">·</span>
+    <span>Handmade with Love</span><span class="ticker-dot">·</span>
+    <span>Made in India</span><span class="ticker-dot">·</span>
+    <span>Crystal Clear Cases</span><span class="ticker-dot">·</span>
+  
+  </div>
+</div>
+
+<!-- WHAT YOU GET -->
+<section id="what">
+  <div class="what-wrap">
+    <div class="reveal" style="text-align:center;">
+      <p class="section-eyebrow" style="justify-content:center;">The product</p>
+      <h2 class="section-title">What you <em>actually get.</em></h2>
+      <p class="section-sub" style="margin:0 auto;text-align:center;">Two beautifully pieces that work together seamlessly.</p>
+    </div>
+    <div class="what-grid reveal">
+      <div class="what-item">
+        <div style="position:relative;width:100%;display:flex;justify-content:center;">
+          <div class="what-labels-left">
+            <div class="wlabel wlabel-left"><div class="wl-dot"></div><div class="wl-line"></div><span>Crystal clear &<br>anti-yellowing</span></div>
+            <div class="wlabel wlabel-left"><div class="wl-dot"></div><div class="wl-line"></div><span>All popular<br>phone models</span></div>
+            <div class="wlabel wlabel-left"><div class="wl-dot"></div><div class="wl-line"></div><span>Hardshell &<br>lightweight</span></div>
+          </div>
+          <div class="what-card" style="max-width:220px;">
+            <div class="case-svg-wrap">
+              <svg viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="4" width="104" height="192" rx="20" fill="rgba(245,240,232,0.7)" stroke="#c9957e" stroke-width="1.2"/>
+                <rect x="16" y="14" width="88" height="172" rx="14" fill="rgba(237,232,223,0.5)" stroke="#e8c4b8" stroke-width="0.8"/>
+                <rect x="36" y="18" width="30" height="8" rx="4" fill="rgba(200,194,184,0.5)" stroke="#c8c2b8" stroke-width="0.6"/>
+                <rect x="4" y="50" width="4" height="18" rx="2" fill="#c9957e" opacity="0.4"/>
+                <rect x="4" y="74" width="4" height="18" rx="2" fill="#c9957e" opacity="0.4"/>
+                <rect x="112" y="60" width="4" height="24" rx="2" fill="#c9957e" opacity="0.4"/>
+                <path d="M8 24 Q8 4 28 4" stroke="#c9957e" stroke-width="0.6" opacity="0.5" fill="none"/>
+                <path d="M112 24 Q112 4 92 4" stroke="#c9957e" stroke-width="0.6" opacity="0.5" fill="none"/>
+              </svg>
+            </div>
+            <div class="what-title">Transparent Cover</div>
+          </div>
+          <div class="what-labels-right">
+            
+            
+          </div>
+        </div>
+      </div>
+      <div class="what-item">
+        <div style="position:relative;width:100%;display:flex;justify-content:center;">
+          <div class="what-labels-left">
+            <div class="wlabel wlabel-left"><div class="wl-dot"></div><div class="wl-line"></div><span>Waterproof prints</span></div>
+            <div class="wlabel wlabel-left"><div class="wl-dot"></div><div class="wl-line"></div><span>Swap anytime,<br>no tools needed</span></div>
+          </div>
+          <div class="what-card" style="max-width:220px;">
+            <div class="cards-fan-wrap">
+              <div class="fan-card fan-c1">🧵</div>
+              <div class="fan-card fan-c2" style="font-family:'Playfair Display',serif;font-style:italic;font-size:0.75rem;color:#fff;text-align:center;padding:0.5rem;">Art<br>Series</div>
+              <div class="fan-card fan-c3">🕉️</div>
+            </div>
+            <div class="what-title">Insert Cards</div>
+          </div>
+          <div class="what-labels-right">
+            <div class="wlabel wlabel-right"><div class="wl-dot"></div><div class="wl-line"></div><span>Made with durable<br>premium card stock</span></div>
+            <div class="wlabel wlabel-right"><div class="wl-dot"></div><div class="wl-line"></div><span> curated<br>collections</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-eyebrow">The process</p>
+      <h2 class="section-title">Three simple steps<br>to your <em>perfect case.</em></h2>
+    </div>
+    <div class="steps-wrap reveal">
+      <div class="step-box"><div class="step-num">01</div><div class="step-icon">📱</div><div class="step-title">Pick Your Case</div><p class="step-desc">Choose a crystal-clear, anti-yellowing, hardshell case for your phone model. One case — every style you'll ever need.</p></div>
+      <div class="step-box"><div class="step-num">02</div><div class="step-icon">🎨</div><div class="step-title">Choose Your Card</div><p class="step-desc">Pick from our curated collections — Cabin, Divine, Persona, Art Series, Zariya — or go fully custom.</p></div>
+      <div class="step-box"><div class="step-num">03</div><div class="step-icon">✨</div><div class="step-title">Swap Anytime</div><p class="step-desc">Slide the card in, slide it out. Change your vibe with your mood, season, or occasion. Zero tools, zero hassle.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     GALLERY / COLLECTION — REAL PRODUCT PHOTOS
+     All images displayed in standardized phone frames
+     ═══════════════════════════════════════════ -->
+<section id="gallery">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-eyebrow">Our Collection</p>
+      <h2 class="section-title">Browse our<br><em>real designs.</em></h2>
+      <div class="divider-line"></div>
+      <p class="section-sub">Actual photos of our handcrafted cards across collections. Tap any to order — or DM us for something fully custom.</p>
+    </div>
+
+    <!-- Collection Filter Tabs — matching your actual collections -->
+    <div class="cat-tabs reveal">
+      <button class="cat-tab active" onclick="filterGallery('all',this)">All Designs</button>
+      <button class="cat-tab" onclick="filterGallery('Cabin Collection',this)">Cabin Collection</button>
+      <button class="cat-tab" onclick="filterGallery('Divine',this)">Divine</button>
+      <button class="cat-tab" onclick="filterGallery('Persona Collection',this)">Persona</button>
+      <button class="cat-tab" onclick="filterGallery('The Art Series',this)">Art Series</button>
+      <button class="cat-tab" onclick="filterGallery('Zariya- The Dhaga',this)">Zariya</button>
+    </div>
+
+    <!-- Product Grid — rendered by JavaScript with real images in standardized phone frames -->
+    <div class="product-collection-grid reveal" id="productGrid">
+      <!-- Cards loaded dynamically — add your photos via the Gallery Manager (Ctrl+Shift+A) -->
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="reveal" style="text-align:center;margin-top:3rem;padding-top:2rem;border-top:0.5px solid var(--border-blush);">
+      <p style="font-size:0.9rem;color:var(--warm-gray);margin-bottom:1rem;">Don't see your vibe? We make <em>anything</em> — just DM us.</p>
+      <a href="https://instagram.com/thethatcover" target="_blank" style="display:inline-flex;align-items:center;gap:0.75rem;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;padding:0.9rem 2rem;font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:opacity 0.3s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        See all designs on Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-eyebrow">Pricing</p>
+      <h2 class="section-title">Find your<br><em>perfect tier.</em></h2>
+      <div class="divider-line"></div>
+      <p class="section-sub">Every tier includes a crystal-clear case + your insert card. Cards are always swappable — buy more anytime.</p>
+    </div>
+    <div class="products-grid reveal" style="margin-top:2.5rem;">
+      <div class="product-card">
+        <div class="product-badge">Starter</div>
+        <div class="product-name">Basic<br>Card</div>
+        <div class="product-price">₹349</div>
+        <div class="product-price-note">Case + 1 ready design card</div>
+        <ul class="product-features">
+          <li>Pick from our collections</li>
+          <li>Crystal clear anti-yellow case</li>
+          <li>Hardshell</li>
+          <li>All popular phone models</li>
+          <li>Ships in 4–7 days</li>
+        </ul>
+        <a href="https://instagram.com/thethatcover" target="_blank" class="product-btn">DM to Order</a>
+      </div>
+      <div class="product-card featured">
+        <div class="product-badge">Most Popular</div>
+        <div class="product-name">Semi-Custom<br>Card</div>
+        <div class="product-price">₹399</div>
+        <div class="product-price-note">Case + custom board</div>
+        <ul class="product-features">
+          <li>Define your board's aesthetic</li>
+          <li>Our designers style it for you</li>
+          <li>Digital preview before printing</li>
+          <li>waterproof print</li>
+          <li>Ships in 5–8 days</li>
+        </ul>
+        <a href="https://instagram.com/thethatcover" target="_blank" class="product-btn">DM to Order</a>
+      </div>
+      <div class="product-card">
+        <div class="product-badge">Premium</div>
+        <div class="product-name">Full Custom<br>Illustration</div>
+        <div class="product-price">₹499</div>
+        <div class="product-price-note">Case+ Hand-illustrated portrait art</div>
+        <ul class="product-features">
+          <li>Send your photos &amp; references</li>
+          <li>Couple portraits, pet art &amp; more</li>
+          <li>Durable premium card stock</li>
+          <li>waterproof print</li>
+          <li>Ships in 7–10 days</li>
+        </ul>
+        <a href="https://instagram.com/thethatcover" target="_blank" class="product-btn">DM to Order</a>
+      </div>
+    </div>
+    <div class="upsell-row reveal">
+      <div><div class="upsell-text">Extra Cards Only <small>Add more vibes — no new case needed</small></div></div>
+      <div class="upsell-prices">
+        <div class="up-price-item"><div class="up-price">₹99</div><div class="up-label">Basic</div></div>
+        <div class="up-sep"></div>
+        <div class="up-price-item"><div class="up-price">₹149</div><div class="up-label">Semi-Custom</div></div>
+        <div class="up-sep"></div>
+        <div class="up-price-item"><div class="up-price">₹249</div><div class="up-label">Full Custom</div></div>
+        <a href="https://instagram.com/thethatcover" target="_blank" class="btn-primary" style="padding:0.7rem 1.5rem;font-size:0.74rem;">DM to Order</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WHY US -->
+<section id="why">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-eyebrow">Why That Cover</p>
+      <h2 class="section-title">Built different.<br><em>On purpose.</em></h2>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-item"><div class="why-icon">🔄</div><div class="why-title">Swappable Cards — Unique in India</div><p class="why-desc">No other brand does this. Slide cards in and out of your clear case anytime. One case, infinite personalities. Change your mood, not your case.</p></div>
+      <div class="why-item" style="border-right:none;"><div class="why-icon">🤍</div><div class="why-title">Handmade with Love</div><p class="why-desc">Every card is carefully printed, cut, and packed by hand. Not mass manufactured. Each order gets real personal attention.</p></div>
+      <div class="why-item" style="border-bottom:none;"><div class="why-icon">🇮🇳</div><div class="why-title">Proudly Made in India</div><p class="why-desc">100% Indian-made, Indian-owned small business. Supporting local artistry. Your purchase directly supports a real creator.</p></div>
+      <div class="why-item" style="border-right:none;border-bottom:none;"><div class="why-icon">🎨</div><div class="why-title">5 Curated Collections</div><p class="why-desc">Cabin, Divine, Persona, Art Series, Zariya — each collection tells a different story. Find yours, or let us craft something entirely new.</p></div>
+    </div>
+    <div class="stats-strip reveal">
+      <div class="stat-item"><div class="stat-num">+</div><div class="stat-label">Happy Customers</div></div>
+      <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Curated Collections</div></div>
+      <div class="stat-item"><div class="stat-num">4.9★</div><div class="stat-label">Average Rating</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-eyebrow">Got questions?</p>
+      <h2 class="section-title">We have <em>answers.</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">What exactly is THAT COVER?</span><span class="faq-plus">+</span></button><div class="faq-a">THAT COVER is redefining the phone case experience. Instead of one permanent look, we offer interchangeable design cards. Simply slide a card into your clear case to instantly refresh your style. Switch them out anytime with zero tools and zero hassle.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">What are the collections?</span><span class="faq-plus">+</span></button><div class="faq-a">Our 5 curated collections are: Cabin Collection (cozy, warm aesthetic), Divine (spiritual themes), Persona Collection (personality-driven designs), The Art Series (artistic illustrations), and Zariya- The Dhaga (thread-inspired, cultural aesthetics). Each collection has multiple designs to choose from.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Which phone models are supported?</span><span class="faq-plus">+</span></button><div class="faq-a">We support iPhone, Samsung, OnePlus, Redmi, Realme and most popular Android models. Message us on Instagram with your exact phone model before ordering and we'll confirm availability instantly.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">How long does delivery take?</span><span class="faq-plus">+</span></button><div class="faq-a">Basic cards ship in 4–7 days. Semi-custom in 5–8 days. Full custom illustrations in 7–10 days. We ship pan-India via tracked courier. You'll get a tracking link once dispatched.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Can I order extra cards without buying a new case?</span><span class="faq-plus">+</span></button><div class="faq-a">Absolutely! Extra cards start from just ₹99. That's the whole point — buy more cards, swap your vibe whenever you want. One case can hold a whole wardrobe of cards.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">What is your return/replacement policy?</span><span class="faq-plus">+</span></button><div class="faq-a">Since each card is made-to-order, we don't accept returns. However, if your product arrives damaged or incorrect, we replace it immediately — no questions asked. Your satisfaction is everything to us.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order" style="background:var(--charcoal);padding:6rem 1.5rem;">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <p class="section-eyebrow" style="justify-content:center;color:var(--blush);">How to order</p>
+      <h2 class="section-title" style="color:#fff;">It's as easy as<br>sending a <em>DM.</em></h2>
+      <div class="divider-line" style="margin:1.25rem auto;background:var(--blush-dark);"></div>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto;text-align:center;">We're a small handmade business and we love keeping it personal. Just slide into our Instagram DMs — no complicated forms, no bots. Just us.</p>
+    </div>
+    <div class="reveal" style="display:flex;justify-content:center;margin:3rem 0;">
+      <a href="https://instagram.com/thethatcover" target="_blank" style="display:flex;align-items:center;gap:1.25rem;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;padding:1.25rem 2.5rem;font-family:'Jost',sans-serif;font-size:1rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.3s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        DM us on Instagram — @thethatcover
+      </a>
+    </div>
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:0.5px solid rgba(255,255,255,0.1);margin-bottom:3rem;">
+      <div style="padding:2rem;border-right:0.5px solid rgba(255,255,255,0.08);text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:2.5rem;color:rgba(196,149,126,0.2);line-height:1;margin-bottom:0.75rem;">01</div><div style="font-size:1.5rem;margin-bottom:0.75rem;">📲</div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:0.4rem;">Follow &amp; DM Us</div><p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">Follow <strong style="color:var(--blush);">@thethatcover</strong> on Instagram and send us a DM with your name, phone model &amp; design idea.</p></div>
+      <div style="padding:2rem;border-right:0.5px solid rgba(255,255,255,0.08);text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:2.5rem;color:rgba(196,149,126,0.2);line-height:1;margin-bottom:0.75rem;">02</div><div style="font-size:1.5rem;margin-bottom:0.75rem;">🎨</div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:0.4rem;">We Design &amp; Preview</div><p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">We'll create your card and share a digital preview on DM. You approve, we print. Simple as that.</p></div>
+      <div style="padding:2rem;text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:2.5rem;color:rgba(196,149,126,0.2);line-height:1;margin-bottom:0.75rem;">03</div><div style="font-size:1.5rem;margin-bottom:0.75rem;">🚚</div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:0.4rem;">Pay &amp; We Ship</div><p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">Pay via UPI on DM. We pack it with love and ship pan-India. Tracking link sent once dispatched.</p></div>
+    </div>
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,0.06);">
+      <div style="background:var(--charcoal);padding:2rem;border-left:2px solid var(--blush-dark);"><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:0.6rem;">🚚 Shipping</div><div style="font-size:0.84rem;color:rgba(255,255,255,0.45);line-height:1.75;">Pan-India delivery via tracked courier. Ships in 4–10 days. Tracking link shared once dispatched.</div></div>
+      <div style="background:var(--charcoal);padding:2rem;border-left:2px solid var(--blush-dark);"><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:0.6rem;">💳 Payment</div><div style="font-size:0.84rem;color:rgba(255,255,255,0.45);line-height:1.75;">UPI or bank transfer — all details shared over Instagram DM after confirming your order.</div></div>
+      <div style="background:var(--charcoal);padding:2rem;border-left:2px solid var(--blush-dark);"><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:0.6rem;">📦 What's in the Box</div><div style="font-size:0.84rem;color:rgba(255,255,255,0.45);line-height:1.75;">1× Crystal clear case + your insert card(s), packed by hand with love from India.</div></div>
+      <div style="background:var(--charcoal);padding:2rem;border-left:2px solid var(--blush-dark);"><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:0.6rem;">🔄 Replacements</div><div style="font-size:0.84rem;color:rgba(255,255,255,0.45);line-height:1.75;">Arrived damaged or wrong? We replace it immediately, no questions asked. Your satisfaction is everything.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--charcoal);border-top:0.5px solid rgba(255,255,255,0.06);padding:3.5rem 1.5rem 2rem;">
+  <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;gap:3rem;align-items:start;">
+    <div>
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;opacity:0.9;"><span style="color:#fff;font-family:'Playfair Display',serif;font-weight:700;font-size:0.85rem;">TC</span></div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;letter-spacing:0.08em;color:#fff;text-transform:uppercase;">That <span style="color:var(--blush);">Cover</span></div>
+      </div>
+      <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);margin-bottom:1rem;font-style:italic;">Fit it. Flaunt it. Cover it.</div>
+      <div style="font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.75;">A handmade Indian small business crafting swappable phone case inserts with love and intention.</div>
+    </div>
+    <div>
+      <h4 style="font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--blush);margin-bottom:1rem;">Navigate</h4>
+      <a href="#how" style="display:block;font-size:0.8rem;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:0.6rem;transition:color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">How It Works</a>
+      <a href="#products" style="display:block;font-size:0.8rem;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:0.6rem;transition:color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Shop</a>
+      <a href="#gallery" style="display:block;font-size:0.8rem;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:0.6rem;transition:color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Collection</a>
+      <a href="#why" style="display:block;font-size:0.8rem;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:0.6rem;transition:color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Why Us</a>
+      <a href="#faq" style="display:block;font-size:0.8rem;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:0.6rem;transition:color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">FAQs</a>
+    </div>
+    <div style="text-align:right;">
+      <h4 style="font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--blush);margin-bottom:1rem;">Find Us &amp; Order</h4>
+      <div style="display:flex;gap:0.75rem;justify-content:flex-end;">
+        <a href="https://instagram.com/thethatcover" target="_blank" style="width:38px;height:38px;border:0.5px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;color:rgba(255,255,255,0.45);transition:all 0.3s;" onmouseover="this.style.borderColor='var(--blush)';this.style.color='var(--blush)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.12)';this.style.color='rgba(255,255,255,0.45)'">📷</a>
+      </div>
+      <div style="margin-top:1rem;">
+        <a href="https://instagram.com/thethatcover" target="_blank" style="color:var(--blush);font-size:0.88rem;text-decoration:none;letter-spacing:0.04em;">@thethatcover</a><br>
+        <span style="font-size:0.76rem;color:rgba(255,255,255,0.3);">DM us to place an order 🌸</span>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1000px;margin:2.5rem auto 0;padding-top:1.5rem;border-top:0.5px solid rgba(255,255,255,0.07);display:flex;flex-wrap:wrap;justify-content:space-between;gap:0.75rem;font-size:0.73rem;color:rgba(255,255,255,0.3);">
+    <div>© 2026 THAT COVER. All rights reserved.</div>
+    <div>Made with 🤍 in India</div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     GALLERY MANAGER (ADMIN PANEL)
+     Activate: Press Ctrl+Shift+A on keyboard
+     Password: thatcover@admin
+     (Change password in script below before publishing)
+     ═══════════════════════════════════════════ -->
+
+<!-- Admin FAB Button (hidden until activated) -->
+<button class="admin-fab" id="adminFab" onclick="openAdminPanel()">⚙ Manage Gallery</button>
+
+<!-- Admin Panel Overlay -->
+<div class="admin-overlay" id="adminOverlay" onclick="if(event.target===this)closeAdminPanel()">
+  <div class="admin-panel-box">
+
+    <div class="admin-panel-header">
+      <h3>Gallery Manager — That Cover</h3>
+      <button onclick="closeAdminPanel()" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.6);font-size:1.5rem;line-height:1;padding:0;">✕</button>
+    </div>
+
+    <div class="admin-panel-body">
+
+      <!-- ADD / EDIT FORM -->
+      <div style="background:var(--parchment);padding:1.5rem;margin-bottom:1.5rem;">
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:1rem;" id="aFormTitle">Add New Card</h4>
+
+        <div class="a-grid">
+          <div>
+            <label class="a-label">Card Name *</label>
+            <input class="a-input" id="aName" type="text" placeholder="e.g. Sunset Bloom">
+          </div>
+          <div>
+            <label class="a-label">Collection *</label>
+            <select class="a-input" id="aCollection">
+              <option value="Cabin Collection">Cabin Collection</option>
+              <option value="Divine">Divine</option>
+              <option value="Persona Collection">Persona Collection</option>
+              <option value="The Art Series">The Art Series</option>
+              <option value="Zariya- The Dhaga">Zariya- The Dhaga</option>
+            </select>
+          </div>
+          <div>
+            <label class="a-label">Price</label>
+            <input class="a-input" id="aPrice" type="text" value="₹349">
+          </div>
+          <div>
+            <label class="a-label">Badge (optional)</label>
+            <input class="a-input" id="aBadge" type="text" placeholder="Bestseller / New / Limited">
+          </div>
+        </div>
+
+        <!-- IMAGE UPLOAD SECTION -->
+        <div class="a-image-zone">
+          <p style="font-size:0.78rem;font-weight:500;color:var(--charcoal);margin-bottom:1rem;">📸 Product Photo — All images display in standardized phone frame</p>
+
+          <!-- Option 1: Upload from device -->
+          <div style="margin-bottom:1rem;">
+            <label class="a-label" style="margin-top:0;">Option 1 — Upload from your phone/computer:</label>
+            <input type="file" id="aImageFile" accept="image/*" onchange="handleAdminFile(this)"
+              style="font-size:0.82rem;font-family:'Jost',sans-serif;color:var(--charcoal);cursor:pointer;">
+            <div style="font-size:0.7rem;color:var(--warm-gray);margin-top:0.3rem;">JPG, PNG, WEBP — max 5MB. Best results: portrait/vertical photos.</div>
+          </div>
+
+          <div style="text-align:center;color:var(--light-gray);font-size:0.8rem;margin:0.6rem 0;letter-spacing:0.08em;">— OR —</div>
+
+          <!-- Option 2: Google Drive / URL -->
+          <div>
+            <label class="a-label" style="margin-top:0;">Option 2 — Paste image URL (Google Drive works!):</label>
+            <input class="a-input" id="aImageUrl" type="text"
+              placeholder="https://drive.google.com/file/d/.../view"
+              oninput="handleAdminUrlInput(this.value)"
+              style="background:var(--warm-white);">
+            <div class="gdrive-note">
+              💡 <strong>How to use Google Drive:</strong><br>
+              1. Open your image in Google Drive<br>
+              2. Right-click → Share → "Anyone with the link" → Copy link<br>
+              3. Paste the link above — we auto-convert it to work as an image ✅
+            </div>
+          </div>
+
+          <!-- Image Preview -->
+          <div id="aPreviewWrap" style="display:none;margin-top:1.25rem;">
+            <label class="a-label" style="margin-top:0;">Preview (phone frame):</label>
+            <div style="display:flex;align-items:flex-start;gap:1rem;">
+              <div class="a-preview-phone">
+                <img id="aPreviewImg" style="width:100%;height:100%;object-fit:cover;object-position:center top;" alt="preview">
+              </div>
+              <div style="font-size:0.78rem;color:var(--warm-gray);line-height:1.9;padding-top:0.25rem;">
+                ✅ Image loaded!<br>
+                <span style="font-size:0.7rem;color:var(--light-gray);">This is how it will appear<br>in the product grid.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;margin-top:1.25rem;flex-wrap:wrap;">
+          <button class="a-btn a-btn-save" id="aSaveBtn" onclick="saveAdminCard()">Add Card</button>
+          <button class="a-btn a-btn-cancel" id="aCancelEditBtn" onclick="resetAdminForm()" style="display:none;">Cancel Edit</button>
+        </div>
+      </div>
+
+      <!-- EXISTING CARDS LIST -->
+      <hr class="admin-section-divider">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);">
+          Your Cards
+          <span style="font-family:'Jost',sans-serif;font-size:0.78rem;color:var(--warm-gray);font-weight:300;margin-left:0.5rem;">(<span id="adminCardCount">0</span> total)</span>
+        </h4>
+      </div>
+      <div class="admin-list-wrap" id="adminCardList">
+        <div style="padding:1.5rem;text-align:center;color:var(--warm-gray);font-size:0.85rem;">Loading...</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ SCRIPTS ═══════════════════════════════════════ -->
+<script>
+// ── CURSOR ──
+const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+animRing();
+
+// ── MOBILE MENU ──
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');}
+
+// ── CARD CAROUSEL (hero) ──
+const heroCards=['heroCard1','heroCard2','heroCard3','heroCard4'];
+let ci=0;
+function showHeroCard(i){
+  heroCards.forEach((id,idx)=>{
+    const el=document.getElementById(id);
+    if(!el)return;
+    if(idx===i){el.style.opacity='1';el.style.transform='translateY(0)';}
+    else{el.style.opacity='0';el.style.transform='translateY(10px)';}
+  });
+}
+setInterval(()=>{ci=(ci+1)%heroCards.length;showHeroCard(ci);},2600);
+
+// ── SCROLL REVEAL ──
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+// ── FAQ ──
+function toggleFaq(btn){
+  const item=btn.parentElement;
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+
+// ── NAV SCROLL ──
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('navbar');
+  nav.style.boxShadow=window.scrollY>40?'0 2px 20px rgba(42,37,32,0.06)':'none';
+});
+</script>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// GALLERY MANAGEMENT SYSTEM
+// 
+// HOW TO USE:
+//   1. Open your website in a browser
+//   2. Press Ctrl + Shift + A on your keyboard
+//   3. Enter password when prompted: thatcover@admin
+//   4. A "Manage Gallery" button will appear at bottom-right
+//   5. Click it to add/edit/delete product cards
+//
+// TO CHANGE PASSWORD: Edit ADMIN_PASSWORD below before publishing
+// ═══════════════════════════════════════════════════════════════
+
+const ADMIN_PASSWORD = 'thatcover@admin'; // ← CHANGE THIS!
+const STORAGE_KEY    = 'thatcover_gallery_v3';
+
+const COLLECTIONS = [
+  'Cabin Collection',
+  'Divine',
+  'Persona Collection',
+  'The Art Series',
+  'Zariya- The Dhaga'
+];
+
+// Default placeholder cards shown before you add real photos
+const DEFAULT_CARDS = [
+  { id:'d1', name:'Divine — Card 1',      collection:'Divine',              price:'₹349', badge:'',           imageUrl:'', emoji:'🕉️' },
+  { id:'d2', name:'Divine — Card 2',      collection:'Divine',              price:'₹349', badge:'Bestseller', imageUrl:'', emoji:'🪷' },
+  { id:'d3', name:'Cabin — Card 1',       collection:'Cabin Collection',    price:'₹349', badge:'',           imageUrl:'', emoji:'🏕️' },
+  { id:'d4', name:'Cabin — Card 2',       collection:'Cabin Collection',    price:'₹349', badge:'New',        imageUrl:'', emoji:'🌿' },
+  { id:'d5', name:'Persona — Card 1',     collection:'Persona Collection',  price:'₹349', badge:'',           imageUrl:'', emoji:'✨' },
+  { id:'d6', name:'Persona — Card 2',     collection:'Persona Collection',  price:'₹349', badge:'',           imageUrl:'', emoji:'🌟' },
+  { id:'d7', name:'Art Series — No. 1',   collection:'The Art Series',      price:'₹399', badge:'Bestseller', imageUrl:'', emoji:'🎨' },
+  { id:'d8', name:'Art Series — No. 2',   collection:'The Art Series',      price:'₹399', badge:'',           imageUrl:'', emoji:'🖼️' },
+  { id:'d9', name:'Zariya — Thread I',    collection:'Zariya- The Dhaga',   price:'₹349', badge:'',           imageUrl:'', emoji:'🧵' },
+  { id:'d10',name:'Zariya — Thread II',   collection:'Zariya- The Dhaga',   price:'₹349', badge:'New',        imageUrl:'', emoji:'🌺' },
+];
+
+let galleryCards  = [];
+let currentFilter = 'all';
+let isAdminMode   = false;
+let editingId     = null;
+let pendingB64    = null;
+
+// ── INITIALIZE ──
+function initGallery() {
+  try {
+    const s = localStorage.getItem(STORAGE_KEY);
+    galleryCards = s ? JSON.parse(s) : [...DEFAULT_CARDS];
+  } catch(e) {
+    galleryCards = [...DEFAULT_CARDS];
+  }
+  renderGallery('all');
+}
+
+function persistGallery() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(galleryCards));
+}
+
+// ── RENDER GRID ──
+function renderGallery(filter) {
+  currentFilter = filter;
+  const grid = document.getElementById('productGrid');
+  if (!grid) return;
+
+  const cards = filter === 'all'
+    ? galleryCards
+    : galleryCards.filter(c => c.collection === filter);
+
+  if (cards.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:4rem 2rem;color:var(--warm-gray);">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">📭</div>
+        <p style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--charcoal);">No cards in this collection yet.</p>
+        ${isAdminMode ? '<p style="font-size:0.82rem;margin-top:0.5rem;">Use the Gallery Manager button (bottom-right) to add cards.</p>' : '<p style="font-size:0.82rem;margin-top:0.5rem;">src="https://drive.google.com/uc?export=view&id=1zcVa-b-7WL4xV6tZr00ffwxeHHJLnBzk" — DM us on Instagram!</p>'}
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = cards.map(buildCardHTML).join('');
+}
+
+function buildCardHTML(card) {
+  const badgeStyle = getBadgeStyle(card.badge);
+  const badge = card.badge
+    ? `<div class="pc-badge" style="${badgeStyle}">⭐ ${esc(card.badge)}</div>`
+    : '';
+
+  const imageContent = card.imageUrl
+    ? `<img src="${card.imageUrl}" alt="${esc(card.name)}" loading="lazy"
+         onerror="this.parentElement.innerHTML='<div class=\\'pc-placeholder\\'><span class=\\'pc-placeholder-emoji\\'>📱</span><span class=\\'pc-placeholder-text\\'>Image Unavailable</span></div>'">`
+    : `<div class="pc-placeholder">
+         <span class="pc-placeholder-emoji">${card.emoji || '📱'}</span>
+         <span class="pc-placeholder-text">${isAdminMode ? 'No Image — Click Edit' : 'Coming Soon'}</span>
+       </div>`;
+
+  return `
+    <div class="pc-card" data-cat="${esc(card.collection)}">
+      ${badge}
+      <div class="pc-phone">
+        <div class="pc-frame">
+          <div class="pc-frame-inner">${imageContent}</div>
+        </div>
+      </div>
+      <div class="pc-name">${esc(card.name)}</div>
+      <div class="pc-theme-tag">${esc(card.collection)}</div>
+      <div class="pc-price">from ${esc(card.price)}</div>
+      <a href="https://instagram.com/thethatcover" target="_blank" class="pc-order-btn">DM to Order</a>
+    </div>`;
+}
+
+function getBadgeStyle(badge) {
+  if (!badge) return '';
+  const b = badge.toLowerCase();
+  if (b.includes('bestseller')) return 'background:var(--gold);color:var(--charcoal);';
+  if (b.includes('new'))        return 'background:#4a9e5c;color:#fff;';
+  if (b.includes('custom'))     return 'background:var(--rose);color:#fff;';
+  if (b.includes('limited'))    return 'background:var(--charcoal);color:var(--gold);';
+  return 'background:var(--charcoal);color:#fff;';
+}
+
+function esc(str) {
+  return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── FILTER TABS ──
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderGallery(cat);
+}
+
+// ── ADMIN ACTIVATION ──
+// Keyboard shortcut: Ctrl + Shift + A
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+    e.preventDefault();
+    if (!isAdminMode) {
+      const p = prompt('Enter admin password to manage your gallery:');
+      if (p === null) return;
+      if (p === ADMIN_PASSWORD) {
+        isAdminMode = true;
+        document.getElementById('adminFab').classList.add('active');
+        renderGallery(currentFilter);
+        alert('✅ Admin mode activated!\n\nThe "Manage Gallery" button is now visible at the bottom-right of the screen.\n\nTip: Your changes are saved automatically in your browser.');
+      } else {
+        alert('Incorrect password. Try again.');
+      }
+    } else {
+      openAdminPanel();
+    }
+  }
+});
+
+// ── ADMIN PANEL OPEN/CLOSE ──
+function openAdminPanel() {
+  if (!isAdminMode) return;
+  refreshAdminList();
+  document.getElementById('adminOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAdminPanel() {
+  document.getElementById('adminOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── FORM RESET ──
+function resetAdminForm() {
+  editingId = null;
+  pendingB64 = null;
+  document.getElementById('aFormTitle').textContent = 'Add New Card';
+  document.getElementById('aSaveBtn').textContent = 'Add Card';
+  document.getElementById('aCancelEditBtn').style.display = 'none';
+  document.getElementById('aName').value = '';
+  document.getElementById('aCollection').value = 'Cabin Collection';
+  document.getElementById('aPrice').value = '₹349';
+  document.getElementById('aBadge').value = '';
+  document.getElementById('aImageUrl').value = '';
+  const fi = document.getElementById('aImageFile');
+  if (fi) fi.value = '';
+  document.getElementById('aPreviewWrap').style.display = 'none';
+  document.getElementById('aPreviewImg').src = '';
+}
+
+// ── IMAGE HANDLING ──
+function handleAdminFile(input) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  if (file.size > 5 * 1024 * 1024) {
+    alert('Image is too large (max 5MB). Please compress or resize it first.');
+    input.value = '';
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    pendingB64 = e.target.result;
+    document.getElementById('aImageUrl').value = '';
+    showPreview(pendingB64);
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleAdminUrlInput(url) {
+  pendingB64 = null;
+  if (!url || url.trim().length < 10) {
+    document.getElementById('aPreviewWrap').style.display = 'none';
+    return;
+  }
+  const converted = convertDriveLink(url.trim());
+  showPreview(converted);
+}
+
+function showPreview(src) {
+  const img  = document.getElementById('aPreviewImg');
+  const wrap = document.getElementById('aPreviewWrap');
+  img.src = src;
+  img.onload  = () => { wrap.style.display = 'block'; };
+  img.onerror = () => {
+    wrap.style.display = 'none';
+    // Only alert for URL inputs, not base64
+    if (src && !src.startsWith('data:')) {
+      alert('Could not load image from this URL.\n\nFor Google Drive:\n• Make sure sharing is set to "Anyone with the link"\n• Try uploading the file directly using the file input above');
+    }
+  };
+}
+
+// Convert Google Drive share links to direct image URLs
+function convertDriveLink(url) {
+  // Pattern: /file/d/FILE_ID/view
+  const m1 = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (m1) return `https://lh3.googleusercontent.com/d/${m1[1]}`;
+  // Pattern: ?id=FILE_ID or &id=FILE_ID
+  const m2 = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (m2) return `https://lh3.googleusercontent.com/d/${m2[1]}`;
+  // Already a direct URL or other format
+  return url;
+}
+
+// ── SAVE CARD ──
+function saveAdminCard() {
+  const name       = (document.getElementById('aName').value || '').trim();
+  const collection = document.getElementById('aCollection').value;
+  const price      = (document.getElementById('aPrice').value || '').trim() || '₹349';
+  const badge      = (document.getElementById('aBadge').value || '').trim();
+  const urlInput   = (document.getElementById('aImageUrl').value || '').trim();
+
+  if (!name) {
+    alert('Please enter a card name.');
+    document.getElementById('aName').focus();
+    return;
+  }
+
+  let imageUrl = '';
+  if (pendingB64) {
+    imageUrl = pendingB64;
+  } else if (urlInput) {
+    imageUrl = convertDriveLink(urlInput);
+  } else if (editingId) {
+    const existing = galleryCards.find(c => c.id === editingId);
+    imageUrl = existing ? (existing.imageUrl || '') : '';
+  }
+
+  if (editingId) {
+    const idx = galleryCards.findIndex(c => c.id === editingId);
+    if (idx !== -1) {
+      galleryCards[idx] = { ...galleryCards[idx], name, collection, price, badge, imageUrl };
+    }
+    alert(`✅ "${name}" updated!`);
+  } else {
+    const newCard = {
+      id: 'card-' + Date.now(),
+      name, collection, price, badge, imageUrl,
+      emoji: '📱'
+    };
+    galleryCards.push(newCard);
+    alert(`✅ "${name}" added to ${collection}!`);
+  }
+
+  persistGallery();
+  renderGallery(currentFilter);
+  refreshAdminList();
+  resetAdminForm();
+  pendingB64 = null;
+}
+
+// ── EDIT CARD ──
+function editAdminCard(id) {
+  const card = galleryCards.find(c => c.id === id);
+  if (!card) return;
+
+  editingId = id;
+  document.getElementById('aFormTitle').textContent = 'Edit Card';
+  document.getElementById('aSaveBtn').textContent = 'Update Card';
+  document.getElementById('aCancelEditBtn').style.display = 'inline-block';
+  document.getElementById('aName').value = card.name || '';
+  document.getElementById('aCollection').value = card.collection || 'Cabin Collection';
+  document.getElementById('aPrice').value = card.price || '₹349';
+  document.getElementById('aBadge').value = card.badge || '';
+  document.getElementById('aImageUrl').value = card.imageUrl || '';
+
+  if (card.imageUrl) {
+    showPreview(card.imageUrl);
+  } else {
+    document.getElementById('aPreviewWrap').style.display = 'none';
+  }
+
+  // Scroll to top of admin panel
+  document.getElementById('aFormTitle').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── DELETE CARD ──
+function deleteAdminCard(id) {
+  const card = galleryCards.find(c => c.id === id);
+  if (!card) return;
+  if (!confirm(`Delete "${card.name}" from ${card.collection}?\nThis cannot be undone.`)) return;
+  galleryCards = galleryCards.filter(c => c.id !== id);
+  persistGallery();
+  renderGallery(currentFilter);
+  refreshAdminList();
+}
+
+// ── MOVE CARDS (reorder) ──
+function moveCard(id, direction) {
+  const idx = galleryCards.findIndex(c => c.id === id);
+  if (idx < 0) return;
+  const newIdx = direction === 'up' ? idx - 1 : idx + 1;
+  if (newIdx < 0 || newIdx >= galleryCards.length) return;
+  [galleryCards[newIdx], galleryCards[idx]] = [galleryCards[idx], galleryCards[newIdx]];
+  persistGallery();
+  renderGallery(currentFilter);
+  refreshAdminList();
+}
+
+// ── REFRESH ADMIN CARD LIST ──
+function refreshAdminList() {
+  const list  = document.getElementById('adminCardList');
+  const count = document.getElementById('adminCardCount');
+  if (!list) return;
+  if (count) count.textContent = galleryCards.length;
+
+  if (galleryCards.length === 0) {
+    list.innerHTML = `<div style="padding:1.5rem;text-align:center;color:var(--warm-gray);font-size:0.85rem;">
+      No cards yet. Add your first card using the form above!
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = galleryCards.map((card, idx) => `
+    <div class="a-card-row">
+      <div class="a-card-thumb">
+        ${card.imageUrl
+          ? `<img src="${card.imageUrl}" alt=""
+               onerror="this.parentElement.innerHTML='<span style=\\'font-size:1.1rem;\\'>📱</span>'">`
+          : `<span style="font-size:1.1rem;">${card.emoji || '📱'}</span>`
+        }
+      </div>
+      <div class="a-card-info">
+        <div class="a-card-name">${esc(card.name)}</div>
+        <div class="a-card-sub">${esc(card.collection)}</div>
+        <div class="a-card-meta">${esc(card.price)}${card.badge ? ' · ' + esc(card.badge) : ''}${card.imageUrl ? ' · 📸' : ' · No image'}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.3rem;margin-right:0.5rem;">
+        <button onclick="moveCard('${card.id}','up')" style="background:none;border:0.5px solid var(--border-blush);cursor:pointer;padding:0.25rem 0.5rem;font-size:0.75rem;line-height:1;" title="Move up" ${idx===0?'disabled':''}>▲</button>
+        <button onclick="moveCard('${card.id}','down')" style="background:none;border:0.5px solid var(--border-blush);cursor:pointer;padding:0.25rem 0.5rem;font-size:0.75rem;line-height:1;" title="Move down" ${idx===galleryCards.length-1?'disabled':''}>▼</button>
+      </div>
+      <div style="display:flex;gap:0.4rem;flex-shrink:0;">
+        <button class="a-btn a-btn-edit" onclick="editAdminCard('${card.id}')">Edit</button>
+        <button class="a-btn a-btn-delete" onclick="deleteAdminCard('${card.id}')">Delete</button>
+      </div>
+    </div>`
+  ).join('');
+}
+
+// ── BOOT ──
+document.addEventListener('DOMContentLoaded', initGallery);
+</script>
+
+</body>
+</html>
